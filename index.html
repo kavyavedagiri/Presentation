@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#ffffff" />
+  <title>Kavya Ashwath</title>
+  <link rel="stylesheet" href="assets/presentation.css?v=3" />
+  <link rel="stylesheet" href="assets/story-deck.css?v=8" />
+</head>
+<body>
+  <main class="deck" id="deck" aria-label="Kavya Ashwath engineering interview presentation">
+    <section class="slide active cover" data-notes="Hi, I’m Kavya. I’m a full-stack engineer with four years of experience, and I’d like to spend my twenty minutes on problems I’ve solved rather than products I’ve built. I started my career as a React developer, working part-time on contract with a team doing UI/UX research. That gave me an eye for the small details of how a person actually experiences a product, and it still shapes how I work. From there I grew into a full-stack engineer, with Golang and Node.js on the backend, on PostgreSQL and Redis. I’ve worked in teams from three people up to around thirty, and in each one I ended up owning technical decisions. I’ll walk you through a few problems I’ve solved: how we rebuilt a layout engine without breaking existing customers, how we put an AI agent inside a rigid workflow, how I integrated a very strict SSO provider for the first time, and how I built a video KYC feature on WebRTC. But first, a short look at where I started with React.">
+      <div class="cover-grid about-cover">
+        <div class="cover-introduction">
+          <h1 class="cover-story">I’m a full-stack developer. I work across frontend and backend.</h1>
+          <p class="cover-byline">Kavya Ashwath · Full-stack developer</p>
+        </div>
+        <aside class="cover-overview" aria-label="Presentation overview">
+          <h2>A few problems I’ll walk through</h2>
+          <p class="overview-intro">Each one shows how I found the real constraint and chose a practical way forward.</p>
+          <ul>
+            <li>Improving form layouts while keeping existing V1 forms working</li>
+            <li>Making an AI recommendation fit into a fixed workflow</li>
+            <li>Adapting the platform to a strict SSO provider</li>
+            <li>Getting video KYC snapshots into the workflow reliably</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="slide" data-notes="I started as a part-time software engineer on a three-month contract with a team at the Singapore University of Technology and Design that did UI/UX research, during the pilot run of their company. We built a web app where students show projects, notes and theses on one page, with Google-Docs-style collaborative comments using operational transformation on Node.js, floating panels, and a Three.js mesh where each dot is a student. The hard part was embedding that Three.js scene into React through an iframe and keeping the page fully responsive around it. It was my first real lesson in making two worlds talk to each other. After that I moved into freelancing and built a mutual fund sales platform for a small sales company. It wasn’t a tech company, and the team was about three people, so I made the frontend decisions myself. We stored content in the database and rendered it as HTML, so I used DOMPurify before rendering to reduce cross-site scripting risk. The market data came from the BSE API, and searching on every keystroke scanned thousands of records and made the page stutter. I added debouncing so search runs after the user pauses typing. Heavy pages needed lazy loading and code splitting. The role-based access model scoped partner data by partner ID so each partner’s users saw their own customers. I owned frontend decisions and implementation in a small team, while being careful to distinguish the parts I did from the product as a whole.">
+      <p class="kicker">02 / Early career · 3½ min</p>
+      <h2>Early React work taught me to connect the interface to the real constraint.</h2>
+      <div class="story-grid">
+        <div class="story-copy">
+          <p class="lede">A research-led student app and a small mutual-fund product gave me two very different interface problems.</p>
+          <ul class="points">
+            <li>Embedded a Three.js student view inside a responsive React page.</li>
+            <li>Sanitised database HTML before rendering it in the browser.</li>
+            <li>Debounced search across more than 4,000 market records.</li>
+            <li>Scoped partner access around partner-owned customers.</li>
+          </ul>
+        </div>
+        <div class="project-gallery" aria-label="CAFS Money screenshots">
+          <figure><img src="mutual%20funds/home.png" alt="CAFS Money mutual fund home page" /><figcaption>Mutual fund catalogue</figcaption></figure>
+          <figure><img src="mutual%20funds/search.png" alt="CAFS Money fund search and filters" /><figcaption>Search and filters</figcaption></figure>
+          <figure><img src="ndots/MArch%20website/kg-ui.png" alt="nDots academic network visualization" /><figcaption>nDots MArch · academic network</figcaption></figure>
+          <figure><img src="ndots/corporate%20page/hero.png" alt="nDots landing page with a vertical visual panel" /><figcaption>nDots landing page</figcaption></figure>
+          <figure><img src="ndots/corporate%20page/feature.png" alt="nDots feature page showing product cards" /><figcaption>nDots feature page</figcaption></figure>
+          <figure><img src="ndots/Next%20Stop/home.png" alt="Next Stop university graduate showcase home page" /><figcaption>Next Stop university exhibit</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-notes="At Autonom8 I joined a SaaS low-code platform built on a fork of Camunda 7. It has two applications. Studio is where developers design forms and workflows. Runtime is where end users actually run them, with role-based access, form history, decision tables, branding and theming. I worked across both, and on the Golang services behind them. Each problem I’ll show you came from a client requirement, so each one had a real customer waiting on it. The team and delivery environment were larger and more structured than my earlier work. I learned to work with product, platform and testing colleagues, and to make changes that fit an existing system rather than treating each request as an isolated build.">
+      <p class="kicker">03 / Autonom8 context · 1 min</p>
+      <h2>Autonom8 connected workflow design to end-user runtime.</h2>
+      <p class="lede">A low-code SaaS platform built on a fork of Camunda 7. Each feature started with a client requirement.</p>
+      <div class="platform-map" aria-label="Autonom8 platform structure">
+        <div class="platform-side"><span class="visual-label">Design time</span><strong>Studio</strong><p>Forms and workflows</p></div>
+        <div class="platform-link">configured into</div>
+        <div class="platform-side"><span class="visual-label">Run time</span><strong>Runtime</strong><p>Access, form history, decision tables, branding</p></div>
+        <div class="platform-link">supported by</div>
+        <div class="platform-side service"><span class="visual-label">Services</span><strong>Golang</strong><p>APIs and product capabilities</p></div>
+      </div>
+      <p class="caption">Work spanned Studio, Runtime, and the services behind them, alongside product, platform, and testing teams.</p>
+    </section>
+
+    <section class="slide" data-notes="The form widgets in Studio weren’t pixel-accurate. What a developer designed on the canvas wasn’t exactly what the end user saw. A team of four to five of us built version 2 of the core widgets to fix that. Fixing the layout was only half of it. Existing clients had trained their own staff to build forms in the old V1 style, and they didn’t want that consistency disturbed. So the real constraint was: give new clients exact layouts, and change nothing for old ones. First, we made a layout model. Every widget stores its exact position and size in JSON, and the canvas itself is a separate object with its own size. On save, the complete JSON is converted to base64 and stored in the database. Second, we supported two form types side by side. Every form carries a type flag, V1 or V2, and the system honours whichever it has. V1 forms are untouched. Clients who want V2 can opt in; clients who don’t simply stay where they are. Third, backward compatibility was implemented on the backend as well, not only the frontend. That meant database changes and queries that understood both types. My feature method is to take the request, run a proof of concept, sketch it in Figma or straight in HTML if time is short, define the API or JSON structure, check backend compatibility, and test that existing workflows haven’t broken. V2 shipped without a forced migration. Clients moved when they chose to.">
+      <p class="kicker">04 / Story 1 · 4 min</p>
+      <h2>New form layouts had to preserve every existing V1 form.</h2>
+      <div class="story-grid">
+        <div>
+          <p class="lede">Studio’s canvas and Runtime’s forms did not line up precisely. Existing clients also depended on the V1 layout.</p>
+          <div class="decision-list">
+            <p><span>01</span> Store widget positions and sizes in a JSON layout model.</p>
+            <p><span>02</span> Keep V1 and V2 form types side by side.</p>
+            <p><span>03</span> Update backend queries to support both formats.</p>
+          </div>
+        </div>
+        <div class="version-compare" aria-label="V1 and V2 compatibility model">
+          <div class="version-head">Form type flag</div>
+          <div class="version-branches">
+            <div><b>V1</b><span>Existing forms keep their behaviour</span></div>
+            <div><b>V2</b><span>New forms render exact positions</span></div>
+          </div>
+          <p class="outcome">V2 shipped without a forced migration.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-notes="A Camunda workflow is deterministic: form A always leads to form B. But some steps need judgement. Take a credit card application: after the applicant fills a form, the next screen should recommend which card suits them. How do you put an unpredictable AI step inside a predictable flow without breaking it? There were two traps. One was hard-coding rules, such as one set of cards for NRI users and another for residents. That works for a week, then every change needs a developer. The other was letting a model answer freely, which means inconsistent output the next form can’t read. We moved the logic out of code and into configuration controlled by the application developer. I built the AI agent settings page, where the developer writes a prompt, attaches a knowledge base of web links or uploaded documents, and defines the output as plain text or JSON. For JSON, the developer lists each key with a description and the agent returns that shape. The output is stored in a bind variable, so the next form reads it like any other step. To the workflow, the AI is just another node. We also connected MCP servers through the Smithery registry so agents can use external tools. The knowledge base flow is retrieval-augmented generation. Documents are split into chunks, converted to embeddings, and stored in Pinecone. At runtime the user's input is embedded, relevant chunks are retrieved, then passed with the prompt to the language model. The script distinguishes my agent settings and workflow integration from the RAG pipeline built by the backend team unless I can confirm direct ownership. Application developers can add a recommendation step with a prompt and a document, without writing code.">
+      <p class="kicker">05 / Story 2 · 4½ min</p>
+      <h2>An AI step had to return something the workflow could use.</h2>
+      <p class="lede">The application developer configures the agent. The workflow receives its output as a normal bind variable.</p>
+      <div class="agent-flow">
+        <div class="agent-inputs"><b>Prompt</b><b>Knowledge base</b><b>Output schema</b></div>
+        <div class="flow-stem">agent configuration</div>
+        <div class="agent-engine"><span class="visual-label">AI agent step</span><strong>Retrieve relevant context, then answer</strong><small>Pinecone retrieval was part of the team’s RAG pipeline</small></div>
+        <div class="flow-stem">defined output</div>
+        <div class="agent-output"><strong>Bind variable</strong><span>Read by the next workflow form</span></div>
+      </div>
+      <p class="caption">My contribution: agent settings and workflow integration. MCP servers connected through Smithery. Backend team owned the RAG pipeline.</p>
+    </section>
+
+    <section class="slide" data-notes="A client wanted single sign-on through CyberArk. The platform had never had SSO before, and I had to learn it from the provider’s documentation. I expected it to behave like Google sign-in, but it doesn’t. Google quietly ignores any extra parameters you send. CyberArk is strict: send one key-value pair it doesn’t expect and it returns an error. Copying the familiar pattern simply fails. I wrote a Golang service called the IDP provider that wraps each identity provider, so each provider’s quirks stay inside it and the rest of the platform doesn’t care which one is in use. I made it configurable: any client can switch SSO on in the configuration and fill in a form, with secrets supplied from their cloud setup. There is no code change per client. This was the first SSO integration on the platform and the service gave us a reusable structure for another provider. I would confirm how secrets were stored and fetched, and how users mapped to runtime roles, before going deeper on those implementation details.">
+      <p class="kicker">06 / Story 3 · 2 min</p>
+      <h2>The first SSO provider needed strict parameter handling.</h2>
+      <div class="story-grid">
+        <div>
+          <p class="lede">CyberArk rejected unexpected parameters, so a familiar Google sign-in pattern failed.</p>
+          <ul class="points">
+            <li>Built a Golang identity-provider service.</li>
+            <li>Kept provider-specific behaviour inside its adapter.</li>
+            <li>Made client setup configuration-driven instead of client-specific code.</li>
+          </ul>
+        </div>
+        <div class="provider-map" aria-label="Identity provider adapter structure">
+          <div class="provider-core"><span class="visual-label">Golang service</span><strong>IDP provider</strong><small>Common platform interface</small></div>
+          <div class="provider-links"><div><b>Google</b><span>Lenient parameters</span></div><div><b>CyberArk</b><span>Exact parameters</span></div><div class="future"><b>Next provider</b><span>New adapter</span></div></div>
+        </div>
+      </div>
+      <p class="caption">First SSO integration on the platform. Secrets and user-role mapping details need confirmation before a deeper technical claim.</p>
+    </section>
+
+    <section class="slide" data-notes="A client needed video KYC inside the platform, where an agent talks to a customer on video and verifies them. It was my first time with WebRTC, so I used LiveKit, an open-source platform for real-time audio and video. A plain video call wasn’t enough. Recording had to start automatically the moment the customer connected, with no record button. The agent also needed to take snapshots mid-call for liveness checks, such as show your left hand, turn right, and flip or invert the camera when needed. The subtle problem was the snapshot itself. It could come back as base64, but I couldn’t pass that onward because it was far too large, so it had to be a cloud URL. Then there was a second catch: the platform used signed and unsigned URLs. If the application used signed URLs, I had to call the right API to return a signed one, or the image wouldn’t open outside the runtime. The solution respected the platform’s own rules: store each snapshot in the cloud, return the correct kind of URL, and save it into a bind variable the workflow can use. That took real product knowledge, not just WebRTC knowledge. The result was video KYC working end to end inside a workflow.">
+      <p class="kicker">07 / Story 4 · 2 min</p>
+      <h2>Video KYC depended on how the platform handled snapshot URLs.</h2>
+      <p class="lede">I used LiveKit for a WebRTC call, with recording triggered on connection and liveness snapshots during the call.</p>
+      <div class="kyc-flow" aria-label="Video KYC snapshot flow">
+        <div><span>01</span><b>Customer connects</b><small>Recording starts automatically</small></div>
+        <div><span>02</span><b>Agent requests snapshot</b><small>For a liveness check</small></div>
+        <div><span>03</span><b>Image stored in cloud</b><small>Large base64 payload avoided</small></div>
+        <div><span>04</span><b>Correct URL returned</b><small>Signed or unsigned via platform API</small></div>
+        <div><span>05</span><b>Workflow continues</b><small>URL saved in a bind variable</small></div>
+      </div>
+      <p class="outcome">The detail that mattered: a snapshot had to open correctly outside the Runtime.</p>
+    </section>
+
+    <section class="slide" data-notes="One last quick example, because it shows how I work. I proposed a templates feature in Studio, ran the proof of concept, designed it and shipped it. A template is a JSON file in the frontend, and the catch is that dropping the same template twice creates duplicate widget IDs. I keep a list of the IDs used in each template, and on every drag and drop I suffix any matching ID with a random string, so each instance stays unique. It’s a simple approach, and next I’d generate IDs automatically by walking the JSON. The application team ended up using templates every day, and I kept adding new ones each release based on their feedback. So across all of these, the pattern is the same: understand who is affected, protect what already works, and make the new thing configurable instead of hard-coded. That’s how I’d like to work on your team. Thank you, I’d love to take your questions.">
+      <p class="kicker">08 / Templates and close · 1 min</p>
+      <h2>I bring a habit of protecting what works while improving it.</h2>
+      <div class="story-grid close-grid">
+        <div>
+          <p class="lede">Studio templates began as a proof of concept, then shipped and grew through feedback from the application team.</p>
+          <ul class="points">
+            <li>Templates were JSON files in the frontend.</li>
+            <li>Repeated drops could duplicate widget IDs.</li>
+            <li>Unique suffixes kept each instance separate.</li>
+            <li>The application team used templates daily and shaped each release with feedback.</li>
+          </ul>
+        </div>
+        <div class="closing-statement">
+          <p>Understand who is affected.</p>
+          <p>Protect what already works.</p>
+          <p>Make the new thing configurable.</p>
+          <span>Thank you. I’d be happy to take your questions.</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="notes-panel" id="notes"><h3>Speaker notes</h3><p id="notesText"></p></div>
+  <aside class="help-panel" id="help">
+    <h3>Presenting</h3>
+    <p><kbd>→</kbd> <kbd>Space</kbd> next · <kbd>←</kbd> previous</p>
+    <p><kbd>Home</kbd> start · <kbd>End</kbd> last slide</p>
+    <p><kbd>N</kbd> notes · <kbd>F</kbd> fullscreen · <kbd>T</kbd> 20-minute timer</p>
+    <p><kbd>?</kbd> this panel · <kbd>Esc</kbd> close</p>
+    <p>Open <code>index.html</code> locally. No account or network is required.</p>
+  </aside>
+  <footer class="chrome">
+    <div class="nav-btns"><button class="nav" id="homeBtn" title="Start" aria-label="Start">⌂</button><button class="nav" id="prevBtn" title="Previous" aria-label="Previous slide">←</button><button class="nav" id="nextBtn" title="Next" aria-label="Next slide">→</button></div>
+    <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+    <div class="nav-btns"><span class="timer" id="timer">20:00</span><span class="slide-index" id="slideIndex">01 / 08</span><button class="icon-btn" id="notesBtn" title="Notes">Notes</button><button class="icon-btn" id="timerBtn" title="Timer">Timer</button><button class="icon-btn" id="fullBtn" title="Fullscreen">Full</button><button class="icon-btn" id="helpBtn" title="Help">?</button></div>
+  </footer>
+  <script src="assets/presentation.js?v=2"></script>
+  <script src="assets/image-zoom.js?v=1"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
