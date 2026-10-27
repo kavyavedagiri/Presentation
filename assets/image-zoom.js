@@ -1,5 +1,5 @@
 (() => {
-  const images = Array.from(document.querySelectorAll('.slide img'));
+  const images = Array.from(document.querySelectorAll('.slide img:not([data-no-zoom])'));
   if (!images.length || !('HTMLDialogElement' in window)) return;
 
   const dialog = document.createElement('dialog');
@@ -37,3 +37,4 @@
     if (event.target === dialog) dialog.close();
   });
 })();
+

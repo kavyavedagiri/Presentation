@@ -398,11 +398,6 @@ button.nav:hover, .icon-btn:hover { border-color: var(--gold); }
   white-space: nowrap;
 }
 
-.help, .notes-panel, .help-panel {
-  position: fixed;
-  z-index: 40;
-}
-
 .notes-panel {
   left: 0;
   right: 0;
@@ -432,39 +427,7 @@ button.nav:hover, .icon-btn:hover { border-color: var(--gold); }
   font-size: 0.95rem;
   max-width: 95ch;
 }
-
-.help-panel {
-  right: 1.2rem;
-  bottom: 64px;
-  width: min(360px, 90vw);
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  padding: 1rem;
-  display: none;
-  box-shadow: var(--shadow);
-}
-
-.help-panel.open { display: block; }
-.help-panel h3 { margin: 0 0 0.6rem; font-size: 0.95rem; }
-.help-panel kbd {
-  font-family: var(--mono);
-  background: #0d141c;
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  padding: 0.05rem 0.4rem;
-  font-size: 0.78rem;
-}
-.help-panel p { margin: 0.35rem 0; color: var(--muted); font-size: 0.88rem; }
-
-.timer {
-  font-family: var(--mono);
-  color: var(--muted);
-  font-size: 0.78rem;
-}
-
-.timer.warn { color: var(--rose); }
-
+
 .brand-mark {
   position: absolute;
   top: 2.4vh;
@@ -535,7 +498,7 @@ button.nav:hover, .icon-btn:hover { border-color: var(--gold); }
 
 @media print {
   body { overflow: visible; background: white; color: #111; }
-  .chrome, .help-panel, .brand-mark { display: none !important; }
+  .chrome, .brand-mark { display: none !important; }
   .slide { display: block !important; page-break-after: always; height: auto; color: #111; }
   .notes-panel { display: block !important; position: static; background: #f4f1ea; color: #111; max-height: none; }
 }
